@@ -18,13 +18,51 @@ logging.info('reading file : end')
 my_file.close()
 
 ###### Variables
-lives = 6
+
+HANGMANPICS = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
+
+lives = 5
 
 logging.info('Choosing random word : start')
 user_choice = list(random.choice(list_word))
 
 print(user_choice) #pour nous 
-print(type(user_choice))  #pour nous 
+#print(type(user_choice))  #pour nous 
 
 logging.info('Choosing random word : start')
 
@@ -35,4 +73,17 @@ hidden_list=[]
 for i in user_choice:
     i = "_ "
     hidden_list.append(i)
+
+guess = raw_input("Choose a letter: ").lower()
+
+if guess not in user_choice: 
+    lives -= 1 
+    print("You choose %s... Sorry you lost a life: \n " %(guess) + HANGMANPICS[0] + "\nYou have %s lives remaining." %(lives))
+
+else : 
+    for i in range(len(user_choice)):
+        letter = user_choice[i]
+        if guess == letter: 
+            hidden_list[i] = letter 
 print(hidden_list)
+        
