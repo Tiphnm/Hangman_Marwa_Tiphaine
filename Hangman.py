@@ -7,6 +7,9 @@ import logging
 logging.basicConfig(filename='text.log', level=logging.INFO,
                     format='%(asctime)s: %(name)s :%(levelname)s:%(message)s')
 
+logging.info('This is an info:')
+logging.error('This is an erro:')
+
 logging.info('Reading file : start')
 my_file = open("word_list.txt", "r") 
 lines = my_file.readlines()
