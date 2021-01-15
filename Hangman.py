@@ -70,20 +70,23 @@ hidden_list=[]
 
 ###### Remplacing letter by "_"
 
-for i in user_choice:
-    i = "_ "
-    hidden_list.append(i)
+def hangman(lives, user_choice, hidden_list):
+    for i in user_choice:
+        i = "_ "
+        hidden_list.append(i)
 
-guess = raw_input("Choose a letter: ").lower()
+    guess = raw_input("Choose a letter: ").lower()
 
-if guess not in user_choice: 
-    lives -= 1 
-    print("You choose %s... Sorry you lost a life: \n " %(guess) + HANGMANPICS[0] + "\nYou have %s lives remaining." %(lives))
+    if guess not in user_choice: 
+        lives -= 1 
+        print("You choose %s... Sorry you lost a life: \n " %(guess) + HANGMANPICS[0] + "\nYou have %s lives remaining." %(lives))
 
-else : 
-    for i in range(len(user_choice)):
-        letter = user_choice[i]
-        if guess == letter: 
-            hidden_list[i] = letter 
-print(hidden_list)
-        
+    else : 
+        for i in range(len(user_choice)):
+            letter = user_choice[i]
+            if guess == letter: 
+                hidden_list[i] = letter 
+    print(hidden_list)
+
+
+hangman(lives, user_choice, hidden_list)
