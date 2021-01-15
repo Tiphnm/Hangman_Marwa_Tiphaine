@@ -29,3 +29,10 @@ print(type(user_choice))  #pour nous
 logging.info('Choosing random word : start')
 
 hidden_list=[]
+
+###### Remplacing letter by "_"
+
+for i in user_choice:
+    i = "_ "
+    hidden_list.append(i)
+print(hidden_list)
