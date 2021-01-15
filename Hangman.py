@@ -16,3 +16,16 @@ lines = my_file.readlines()
 list_word = [elem.strip() for elem in lines]
 logging.info('reading file : end')
 my_file.close()
+
+###### Variables
+lives = 6
+
+logging.info('Choosing random word : start')
+user_choice = list(random.choice(list_word))
+
+print(user_choice) #pour nous 
+print(type(user_choice))  #pour nous 
+
+logging.info('Choosing random word : start')
+
+hidden_list=[]
