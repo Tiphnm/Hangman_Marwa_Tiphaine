@@ -35,9 +35,10 @@ def underscore(chosen_word, mylist):
     for i in chosen_word :
         i = "_ "
         mylist.append(i)
-    print(mylist)
+    return mylist
 
 underscore_word = underscore(random_word, hidden_list)
+print(underscore_word)
 
 
 def user_try(life, chosen_word, mylist):   
@@ -51,8 +52,7 @@ def user_try(life, chosen_word, mylist):
         for i in range(len(chosen_word)):
             letter = chosen_word[i]
             if guess == letter: 
-                hidden_list[i] = letter 
-        print(hidden_list)
-        
-underscore(random_word, hidden_list)
-user_try(lives, random_word, hidden_list)
+                mylist[i] = letter 
+        print(underscore_word)
+
+user_try(lives, random_word, underscore_word)
