@@ -8,7 +8,7 @@ logging.basicConfig(filename='text.log', level=logging.INFO,
                     format='%(asctime)s: %(name)s :%(levelname)s:%(message)s')
 
 logging.info('This is an info:')
-logging.error('This is an erro:')
+logging.error('This is an error:')
 
 logging.info('Reading file : start')
 my_file = open("word_list.txt", "r") 
@@ -19,74 +19,40 @@ my_file.close()
 
 ###### Variables
 
-HANGMANPICS = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''']
-
 lives = 5
 
 logging.info('Choosing random word : start')
-user_choice = list(random.choice(list_word))
+random_word = list(random.choice(list_word))
 
-print(user_choice) #pour nous 
+print(random_word) #pour nous 
 #print(type(user_choice))  #pour nous 
-
-logging.info('Choosing random word : start')
 
 hidden_list=[]
 
 ###### Remplacing letter by "_"
 
-def hangman(lives, user_choice, hidden_list):
-    for i in user_choice:
+def underscore(chosen_word, mylist):
+    for i in chosen_word :
         i = "_ "
-        hidden_list.append(i)
+        mylist.append(i)
+    print(mylist)
 
+underscore_word = underscore(random_word, hidden_list)
+
+
+def user_try(life, chosen_word, mylist):   
     guess = raw_input("Choose a letter: ").lower()
 
-    if guess not in user_choice: 
-        lives -= 1 
-        print("You choose %s... Sorry you lost a life: \n " %(guess) + HANGMANPICS[0] + "\nYou have %s lives remaining." %(lives))
+    if guess not in chosen_word : 
+        life -= 1 
+        print("You choose %s... Sorry you lost a life: \n " %(guess) + "\nYou have %s lives remaining." %(life))
 
-    else : 
-        for i in range(len(user_choice)):
-            letter = user_choice[i]
+    else :
+        for i in range(len(chosen_word)):
+            letter = chosen_word[i]
             if guess == letter: 
                 hidden_list[i] = letter 
-    print(hidden_list)
-
-
-hangman(lives, user_choice, hidden_list)
+        print(hidden_list)
+        
+underscore(random_word, hidden_list)
+user_try(lives, random_word, hidden_list)
