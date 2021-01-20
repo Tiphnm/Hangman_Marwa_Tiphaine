@@ -19,6 +19,44 @@ my_file.close()
 
 ###### Variables
 
+HANGMANPICS = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''',
+'''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''','''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''']
+
 Game_is_on = True
 
 lives = 5
@@ -61,14 +99,15 @@ def user_try(life, chosen_word, secret_list):
             print("You win")
     
         if guess not in chosen_word: 
-            life -=1
+            life -=1 
+            print(life)
+            print(HANGMANPICS[life])
             print("You lost a life, you have %s life remaining" %(life)) 
 
-        if life == 0: 
+        if life == 0:
             Game_is_on = False
-            print("You are dead.")
-        
-        
+            print("You are dead.")    
+            
 
 #mon user a des vies et il devine la bonne lettre: on remplace l'underscore en la lettre deviné 
 
@@ -76,5 +115,4 @@ def user_try(life, chosen_word, secret_list):
 
 #autre proposition: tant qu'il y a des underscore dans ma liste et que mes vies sont supérieuses à 0 
             
-
 user_try(lives, random_word, underscore_word)
