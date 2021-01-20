@@ -65,12 +65,13 @@ hidden_list = []
 
 logging.info('Choosing random word : start')
 random_word = list(random.choice(list_word))
+logging.info('Choosing random word : end')
 
-print(random_word) #pour nous 
+#print(random_word) #pour nous 
 #print(type(user_choice))  #pour nous
 
 ###### Remplacing letter by "_"
-
+logging.info('Transforming my list in underscore: start')
 def underscore(chosen_word, secret_list):
     for i in chosen_word :
         i = "_"
@@ -80,7 +81,9 @@ def underscore(chosen_word, secret_list):
 underscore_word = underscore(random_word, hidden_list)
 print(underscore_word)
 
+logging.info('Transforming my list in underscore: end')
 
+logging.info('Function game: start')
 def user_try(life, chosen_word, secret_list): 
 
     Game_is_on = True
@@ -116,3 +119,5 @@ def user_try(life, chosen_word, secret_list):
 #autre proposition: tant qu'il y a des underscore dans ma liste et que mes vies sont supérieuses à 0 
             
 user_try(lives, random_word, underscore_word)
+
+logging.info('Function game: end')
